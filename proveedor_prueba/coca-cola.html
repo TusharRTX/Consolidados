@@ -14,6 +14,7 @@
   --text: #1f2937;
   --muted: #6b7280;
   --btn: #2563eb;
+  --btn-disabled: #9ca3af;
   --locales-bg: #eef2ff;
 }
 * { box-sizing: border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
@@ -46,6 +47,7 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
   background: var(--btn); color: white; border-radius: 12px; font-weight: 600; text-decoration: none; white-space: nowrap;
 }
 .btn:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
+.btn.disabled { background: var(--btn-disabled); cursor: not-allowed; }
 
 .locales-row { border-top: 1px solid var(--border); padding: 16px; }
 .locales-btn {
@@ -101,29 +103,30 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
 
 <script>
 // ====== Datos inyectados por Colab (placeholders) ======
-const __PROVIDER__      = {"proveedor": "Coca-Cola Andina", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)"};
+const __PROVIDER__       = {"proveedor": "Coca-Cola Andina", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)"};
 const medidasPorElemento = {"ESQUINEROS PARA PALLETS": "MÁXIMO: 60x110 cm.", "SEPARADOR": "MÁXIMO: 12x20 cm.", "SEPARADOR XL": "MÁXIMO: 15x40 cm.", "LATERAL CABECERA": "MÁXIMO: 45x160 cm, 40x170 cm."};
 const elementos          = [{"nombre": "ESQUINEROS PARA PALLETS", "medidas": "MÁXIMO: 60x110 cm.", "piezas": 4, "categoria": "BEBIDAS - AGUA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/rUMdITIfO1PU-FOTOMONTAJE-ESQUINERO-BENEDICTINO-SAB.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/o8xeGIgVXmlx-KV-ESQUINERO-BENEDICITINO-SAB.jpg", "localesCsv": "57, 66, 88, 91, 92, 97"}, {"nombre": "SEPARADOR", "medidas": "MÁXIMO: 12x20 cm.", "piezas": 2, "categoria": "BEBIDAS - AGUA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/cQM6fOLMMVX7-FOTOMONTAJE-STOPPER-BENEDICTINO-SABORES.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/0NzfibgmFXNA-KV-Stopper-Benedictino-Sab-1.jpg", "localesCsv": "3, 32, 33, 39, 48, 49, 53, 54, 66, 72, 75, 76, 77, 85, 86, 92, 97, 121, 125, 137, 620, 626, 654, 655, 682, 693, 739, 748, 798, 988"}, {"nombre": "SEPARADOR", "medidas": "MÁXIMO: 12x20 cm.", "piezas": 2, "categoria": "BEBIDAS - HIDRATACI?N - ENERG?A", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/jGLan3fVVcIX-FOTOMONTAJE-STOPPER-POWERADE.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/OE44jTfCMZK7-KV-STOPPER-POWERADE.jpg", "localesCsv": "3, 32, 37, 41, 44, 45, 46, 48, 49, 54, 55, 62, 66, 71, 72, 73, 75, 76, 77, 80, 82, 85, 86, 87, 88, 95, 97, 137, 182, 616, 620, 626, 671, 682, 693, 736, 739, 748, 798, 910"}, {"nombre": "ESQUINEROS PARA PALLETS", "medidas": "MÁXIMO: 60x110 cm.", "piezas": 4, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/VK5yXKW7drDw-FOTOMONTAJE-ESQUINERO-COLAS.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/hcMeenCbkvdz-KV-ESQUINERO-COLAS.jpg", "localesCsv": "38, 39, 48, 54, 72, 76, 77, 80, 82, 85, 86, 125, 137, 182, 607, 654, 671, 686, 693, 739"}, {"nombre": "ESQUINEROS PARA PALLETS", "medidas": "MÁXIMO: 60x110 cm.", "piezas": 4, "categoria": "BEBIDAS - HIDRATACI?N - ENERG?A", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/r74yXKnCIDyW-FOTOMONTAJE-ESQUINERO-POWERADE.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/0UIfYc4oCafg-KV-ESQUINERO-POWERADE.jpg", "localesCsv": "38, 41, 72, 82, 654, 736"}, {"nombre": "SEPARADOR", "medidas": "MÁXIMO: 12x20 cm.", "piezas": 2, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/e8oOOEZga8l4-FOTOMONTAJE-STOPPER-COLAS.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/l8VtWoDCxTJb-KV-Stopper-Colas-1.jpg", "localesCsv": "1, 15, 16, 51, 56, 60, 65, 139, 149, 165, 177, 180, 188, 189, 248, 252, 253, 514, 525, 603, 605, 610, 611, 613, 614, 621, 624, 643, 645, 650, 674, 676, 689, 695, 699, 728, 744, 934, 937, 963"}, {"nombre": "ESQUINEROS PARA PALLETS", "medidas": "MÁXIMO: 60x110 cm.", "piezas": 4, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/JKnQdEamtgkw-FOTOMONTAJE-ESQUINERO-SABORES.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/gwmhvyMSrcSJ-KV-ESQUINERO-SABORES.jpg", "localesCsv": "3, 32, 37, 38, 39, 41, 44, 45, 46, 48, 54, 55, 62, 71, 72, 76, 80, 82, 85, 86, 88, 95, 97, 137, 182, 607, 620, 626, 654, 682, 684, 686, 693, 739, 748"}, {"nombre": "SEPARADOR XL", "medidas": "MÁXIMO: 15x40 cm.", "piezas": 1, "categoria": "BEBIDAS - HIDRATACI?N - ENERG?A", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/qFlZ0MKcF2se-FM-Stopper-XL-PWD-L1-E1.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/VnE223fwYUTT-KV-Stopper-XL-PWD-L1-E1.jpg", "localesCsv": "36, 42, 58, 79, 81, 89, 93, 120, 122, 143, 244, 279, 426, 456, 457, 518, 606, 608, 618, 628, 632, 670, 679, 747, 929, 945, 952, 978, 983, 985, 993"}, {"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 1, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/jgf4FxwmYYdU-FM-Lateral-Cabecera-PWD-L1-E1.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/DZUA4hTW2LIB-KV-Lateral-Cabecera-PWD-L1-E1.jpg", "localesCsv": "78, 84, 94, 98, 99, 127, 602, 631, 635, 697"}, {"nombre": "SEPARADOR XL", "medidas": "MÁXIMO: 15x40 cm.", "piezas": 1, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/9W1I4iWZuO5W-FM-Stopper-XL-Vive-a-fondo-Benedictino-L1-E1.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/8jRw6KKUSJJO-KV-Stopper-XL-Vive-a-fondo-Benedictino-L1-E1.jpg", "localesCsv": "36, 42, 58, 78, 79, 81, 84, 89, 93, 94, 98, 99, 120, 122, 127, 143, 244, 279, 426, 456, 457, 518, 602, 606, 608, 618, 628, 631, 632, 635, 670, 679, 697, 747, 929, 945, 952, 978, 983, 985, 993"}, {"nombre": "SEPARADOR XL", "medidas": "MÁXIMO: 15x40 cm.", "piezas": 1, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/aNqjoh2cS7c4-FM-Stopper-XL-Sprite-Summer-L1-E1.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/DyHmQOaI7XRy-KV-Stopper-XL-Sprite-Summer-L1-E1.jpg", "localesCsv": "40, 43, 129, 134, 142, 144, 146, 164, 166, 183, 195, 463, 516, 523, 524, 600, 601, 612, 615, 619, 625, 638, 644, 646, 647, 652, 653, 657, 658, 668, 678, 680, 681, 683, 687, 696, 742, 743, 764"}, {"nombre": "ESQUINEROS PARA PALLETS", "medidas": "MÁXIMO: 60x110 cm.", "piezas": 1, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/YeCZqMbVRw0w-FM-Esquinero-Pallet-Sprite-Summer-L1-E1.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/mVRyiulUw8hI-KV-Esquinero-Pallet-Sprite-Summer-L1-E1.jpg", "localesCsv": "36, 42, 58, 81, 84, 89, 93, 94, 98, 99, 120, 122, 127, 143, 279, 426, 456, 457, 518, 602, 606, 608, 618, 628, 631, 632, 635, 670, 679, 697, 747, 929, 945, 983, 985"}, {"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 1, "categoria": "BEBIDAS - GAS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/2KuFS3Lyjuwi-FM-Lateral-Cabecera-Sprite-Summer-L1-E1.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/HsIYqHqvUOEc-KV-Lateral-Cabecera-Sprite-Summer-L1-E1.jpg", "localesCsv": "36, 78, 79, 952, 978, 993"}];
 const localesPorElemento = {"ESQUINEROS PARA PALLETS": ["57", "66", "88", "91", "92", "97", "38", "39", "48", "54", "72", "76", "77", "80", "82", "85", "86", "125", "137", "182", "607", "654", "671", "686", "693", "739", "41", "736", "3", "32", "37", "44", "45", "46", "55", "62", "71", "95", "620", "626", "682", "684", "748", "36", "42", "58", "81", "84", "89", "93", "94", "98", "99", "120", "122", "127", "143", "279", "426", "456", "457", "518", "602", "606", "608", "618", "628", "631", "632", "635", "670", "679", "697", "747", "929", "945", "983", "985"], "SEPARADOR": ["3", "32", "33", "39", "48", "49", "53", "54", "66", "72", "75", "76", "77", "85", "86", "92", "97", "121", "125", "137", "620", "626", "654", "655", "682", "693", "739", "748", "798", "988", "37", "41", "44", "45", "46", "55", "62", "71", "73", "80", "82", "87", "88", "95", "182", "616", "671", "736", "910", "1", "15", "16", "51", "56", "60", "65", "139", "149", "165", "177", "180", "188", "189", "248", "252", "253", "514", "525", "603", "605", "610", "611", "613", "614", "621", "624", "643", "645", "650", "674", "676", "689", "695", "699", "728", "744", "934", "937", "963"], "SEPARADOR XL": ["36", "42", "58", "79", "81", "89", "93", "120", "122", "143", "244", "279", "426", "456", "457", "518", "606", "608", "618", "628", "632", "670", "679", "747", "929", "945", "952", "978", "983", "985", "993", "78", "84", "94", "98", "99", "127", "602", "631", "635", "697", "40", "43", "129", "134", "142", "144", "146", "164", "166", "183", "195", "463", "516", "523", "524", "600", "601", "612", "615", "619", "625", "638", "644", "646", "647", "652", "653", "657", "658", "668", "678", "680", "681", "683", "687", "696", "742", "743", "764"], "LATERAL CABECERA": ["78", "84", "94", "98", "99", "127", "602", "631", "635", "697", "36", "79", "952", "978", "993"]};
 // =======================================================
 
-const cardsRoot = document.getElementById('cardsRoot');
-const modal     = document.getElementById('modalLocales');
-const lista     = document.getElementById('listaLocales');
+const cardsRoot   = document.getElementById('cardsRoot');
+const modal       = document.getElementById('modalLocales');
+const lista       = document.getElementById('listaLocales');
 const inputBuscar = document.getElementById('inputBuscar');
 const btnClose    = document.getElementById('btnCloseModal');
 
-document.getElementById('providerName').textContent   = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
+document.getElementById('providerName').textContent     = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
 document.getElementById('providerVigencia').textContent = "Vigencia: " + (__PROVIDER__.vigencia || "Vigencia actual");
 
-function linkOrText(url) {
+function linkBtn(url, label) {
   if (typeof url === "string") {
-    const u = url.trim().toLowerCase();
-    if (u.startsWith("http://") || u.startsWith("https://")) {
-      return `${url}Ver</a>`;
+    const u = url.trim();
+    const low = u.toLowerCase();
+    if (low.startsWith("http://") || low.startsWith("https://")) {
+      return `${u}${label}</a>`;
     }
   }
-  return `<span class="btn" style="background:#9ca3af;cursor:not-allowed">No Adjunta</span>`;
+  return `<span class="btn disabled">No Adjunta</span>`;
 }
 
 function openLocales(arr) {
@@ -182,8 +185,8 @@ function renderCards() {
           <div class="label">Zona a implementar</div>
           <div class="value">${el.categoria || "No Adjunta"}</div>
         </div>
-        <div class="cell">${linkOrText(el.fotomontaje)}</div>
-        <div class="cell">${linkOrText(el.keyvisual)}</div>
+        <div class="cell">${linkBtn(el.fotomontaje, "Fotomontaje")}</div>
+        <div class="cell">${linkBtn(el.keyvisual, "Key Visual")}</div>
       </div>
       <div class="locales-row">
         <div class="locales-btn" role="button" aria-label="Ver locales">Ver locales (${locales.length})</div>

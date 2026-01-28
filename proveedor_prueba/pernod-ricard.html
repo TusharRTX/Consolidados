@@ -14,6 +14,7 @@
   --text: #1f2937;
   --muted: #6b7280;
   --btn: #2563eb;
+  --btn-disabled: #9ca3af;
   --locales-bg: #eef2ff;
 }
 * { box-sizing: border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
@@ -46,6 +47,7 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
   background: var(--btn); color: white; border-radius: 12px; font-weight: 600; text-decoration: none; white-space: nowrap;
 }
 .btn:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
+.btn.disabled { background: var(--btn-disabled); cursor: not-allowed; }
 
 .locales-row { border-top: 1px solid var(--border); padding: 16px; }
 .locales-btn {
@@ -101,29 +103,30 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
 
 <script>
 // ====== Datos inyectados por Colab (placeholders) ======
-const __PROVIDER__      = {"proveedor": "Pernod Ricard", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)"};
+const __PROVIDER__       = {"proveedor": "Pernod Ricard", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)"};
 const medidasPorElemento = {"MINI CABECERA": "MÁXIMO: 40x20x145 cm.", "LATERAL CABECERA CONGELADOS": "MÁXIMO: 100x200 cm."};
 const elementos          = [{"nombre": "MINI CABECERA", "medidas": "MÁXIMO: 40x20x145 cm.", "piezas": 1, "categoria": "ESPIRITUOSOS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/hOW0JiBpNeim-Foto-montaje-Beefeater-generico.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/V0UqlNO8siG0-Foto-montaje-Beefeater-generico.jpg", "localesCsv": "182"}, {"nombre": "MINI CABECERA", "medidas": "MÁXIMO: 40x20x145 cm.", "piezas": 1, "categoria": "LICORES", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/vBZVyl0pAlEq-Foto-montaje-Rmz-generico.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/sNLVYLn5FzGj-Foto-montaje-Rmz-generico.jpg", "localesCsv": "32, 36, 44, 45, 46, 49, 55, 58, 62, 71, 72, 73, 75, 76, 78, 79, 81, 83, 84, 85, 88, 89, 91, 92, 94, 96, 97, 99, 182, 425, 426, 456, 457, 459, 518, 602, 607, 618, 620, 626, 632, 654, 655, 670, 679, 684, 686, 697, 736"}, {"nombre": "MINI CABECERA", "medidas": "MÁXIMO: 40x20x145 cm.", "piezas": 1, "categoria": "ESPIRITUOSOS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/qYiKDCintBSr-Foto-montaje-Ballantines-generico.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/eT9BpA8gmi8S-Foto-montaje-Ballantines-generico.jpg", "localesCsv": "32, 33, 36, 38, 41, 42, 58, 62, 72, 81, 88, 89, 94, 96, 97, 99, 120, 182, 425, 456, 457, 518, 602, 618, 620, 626, 632, 655, 679, 682, 686, 693, 736, 747"}, {"nombre": "MINI CABECERA", "medidas": "MÁXIMO: 40x20x145 cm.", "piezas": 1, "categoria": "LICORES", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/hRKXMVfNiKyi-Foto-montaje-RMZ.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/qkPyBMRJ7TPU-Key-Visual-RMZ.png", "localesCsv": "32, 35, 36, 38, 41, 42, 45, 46, 48, 49"}, {"nombre": "MINI CABECERA", "medidas": "MÁXIMO: 40x20x145 cm.", "piezas": 1, "categoria": "ESPIRITUOSOS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/B4OwYliEwBvM-Foto-montaje-Beefeater.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/1nhsS0tWy0kL-Key-Visual-Beefeater.jpg.png", "localesCsv": "39, 49, 57, 75, 76, 79, 84, 85, 88, 126, 127, 457, 618, 654, 670, 679, 686, 697, 736"}, {"nombre": "MINI CABECERA", "medidas": "MÁXIMO: 40x20x145 cm.", "piezas": 1, "categoria": "LICORES", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/Jxe6IALfnOyZ-Fotomontaje-Buhero-Negro.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/tFRCQKIFgGm2-Key-visual-Buhero-Negro.jpg", "localesCsv": "35, 38, 41, 48, 55, 75, 79, 81, 88, 95, 96, 98, 618, 679, 747"}, {"nombre": "LATERAL CABECERA CONGELADOS", "medidas": "MÁXIMO: 100x200 cm.", "piezas": 1, "categoria": "ESPIRITUOSOS", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/pNDLlciEnWev-Cabecera-Beefeater.jpg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/mZNX7KB9c9za-Key-Visual-Beefeater.jpg", "localesCsv": "57, 88"}];
 const localesPorElemento = {"MINI CABECERA": ["182", "32", "36", "44", "45", "46", "49", "55", "58", "62", "71", "72", "73", "75", "76", "78", "79", "81", "83", "84", "85", "88", "89", "91", "92", "94", "96", "97", "99", "425", "426", "456", "457", "459", "518", "602", "607", "618", "620", "626", "632", "654", "655", "670", "679", "684", "686", "697", "736", "33", "38", "41", "42", "120", "682", "693", "747", "35", "48", "39", "57", "126", "127", "95", "98"], "LATERAL CABECERA CONGELADOS": ["57", "88"]};
 // =======================================================
 
-const cardsRoot = document.getElementById('cardsRoot');
-const modal     = document.getElementById('modalLocales');
-const lista     = document.getElementById('listaLocales');
+const cardsRoot   = document.getElementById('cardsRoot');
+const modal       = document.getElementById('modalLocales');
+const lista       = document.getElementById('listaLocales');
 const inputBuscar = document.getElementById('inputBuscar');
 const btnClose    = document.getElementById('btnCloseModal');
 
-document.getElementById('providerName').textContent   = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
+document.getElementById('providerName').textContent     = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
 document.getElementById('providerVigencia').textContent = "Vigencia: " + (__PROVIDER__.vigencia || "Vigencia actual");
 
-function linkOrText(url) {
+function linkBtn(url, label) {
   if (typeof url === "string") {
-    const u = url.trim().toLowerCase();
-    if (u.startsWith("http://") || u.startsWith("https://")) {
-      return `${url}Ver</a>`;
+    const u = url.trim();
+    const low = u.toLowerCase();
+    if (low.startsWith("http://") || low.startsWith("https://")) {
+      return `${u}${label}</a>`;
     }
   }
-  return `<span class="btn" style="background:#9ca3af;cursor:not-allowed">No Adjunta</span>`;
+  return `<span class="btn disabled">No Adjunta</span>`;
 }
 
 function openLocales(arr) {
@@ -182,8 +185,8 @@ function renderCards() {
           <div class="label">Zona a implementar</div>
           <div class="value">${el.categoria || "No Adjunta"}</div>
         </div>
-        <div class="cell">${linkOrText(el.fotomontaje)}</div>
-        <div class="cell">${linkOrText(el.keyvisual)}</div>
+        <div class="cell">${linkBtn(el.fotomontaje, "Fotomontaje")}</div>
+        <div class="cell">${linkBtn(el.keyvisual, "Key Visual")}</div>
       </div>
       <div class="locales-row">
         <div class="locales-btn" role="button" aria-label="Ver locales">Ver locales (${locales.length})</div>

@@ -14,6 +14,7 @@
   --text: #1f2937;
   --muted: #6b7280;
   --btn: #2563eb;
+  --btn-disabled: #9ca3af;
   --locales-bg: #eef2ff;
 }
 * { box-sizing: border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
@@ -46,6 +47,7 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
   background: var(--btn); color: white; border-radius: 12px; font-weight: 600; text-decoration: none; white-space: nowrap;
 }
 .btn:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
+.btn.disabled { background: var(--btn-disabled); cursor: not-allowed; }
 
 .locales-row { border-top: 1px solid var(--border); padding: 16px; }
 .locales-btn {
@@ -101,29 +103,30 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
 
 <script>
 // ====== Datos inyectados por Colab (placeholders) ======
-const __PROVIDER__      = {"proveedor": "CCU - CERVECERA CCU CHILE LTDA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)"};
+const __PROVIDER__       = {"proveedor": "CCU - CERVECERA CCU CHILE LTDA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)"};
 const medidasPorElemento = {"LATERAL CABECERA": "MÁXIMO: 45x160 cm, 40x170 cm.", "ESQUINEROS PARA PALLETS": "MÁXIMO: 60x110 cm.", "MINI CABECERA": "MÁXIMO: 40x20x145 cm."};
 const elementos          = [{"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 2, "categoria": "CERVEZA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/vXErbXsJUzrl-Captura-de-pantalla-2026-01-02-121539.png", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/EQih8QnctiWo-Captura-de-pantalla-2026-01-02-121535.png", "localesCsv": "3, 55, 83, 84, 85, 97, 616, 628, 654, 671"}, {"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 2, "categoria": "CERVEZA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/U59m7RD6g9vT-Captura-de-pantalla-2026-01-02-115203.png", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/zaCBpuEaJXZt-Captura-de-pantalla-2026-01-02-115155.png", "localesCsv": "32, 41, 44, 46, 48, 49, 57, 71, 72, 73, 76, 83, 85, 95, 97"}, {"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 2, "categoria": "CERVEZA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/ew6O9f1xnCzA-Captura-de-pantalla-2025-12-31-094931.png", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/D5X7CGfme3hz-Captura-de-pantalla-2025-12-31-094943.png", "localesCsv": "16, 61, 74, 140, 149, 253, 276, 525, 610, 613, 643"}, {"nombre": "ESQUINEROS PARA PALLETS", "medidas": "MÁXIMO: 60x110 cm.", "piezas": 2, "categoria": "CERVEZA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/faOulDjNFma4-Captura-de-pantalla-2025-12-31-094422.png", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/UlJWceHqynj5-Captura-de-pantalla-2025-12-31-094433.png", "localesCsv": "58, 72, 73, 75, 83, 910"}, {"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 2, "categoria": "CERVEZA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/5katvSgmkzJ6-Captura-de-pantalla-2025-12-31-093549.png", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/jadxBYlsJsU9-Captura-de-pantalla-2025-12-31-093937.png", "localesCsv": "39, 48, 620, 910, 978, 985"}, {"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 2, "categoria": "CERVEZA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/sLh56dqhaKrk-Captura-de-pantalla-2025-12-31-093549.png", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/lnwRLrURcJNn-Captura-de-pantalla-2025-12-31-093937.png", "localesCsv": "16, 39, 48, 58, 61, 72, 73, 74, 75, 83, 140, 149, 253, 276, 525, 610, 613, 620, 643, 910, 978, 985"}, {"nombre": "LATERAL CABECERA", "medidas": "MÁXIMO: 45x160 cm, 40x170 cm.", "piezas": 2, "categoria": "CERVEZA", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/7EhZZWXKYyhM-Captura-de-pantalla-2025-12-31-093549.png", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/HHPEi7ftzzJh-Captura-de-pantalla-2025-12-31-093937.png", "localesCsv": "39, 48, 620, 910, 978, 985"}, {"nombre": "MINI CABECERA", "medidas": "MÁXIMO: 40x20x145 cm.", "piezas": 1, "categoria": "LICORES", "vigencia": "Etapa 1 (08/01/26 → 10/02/26)", "fotomontaje": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/2MDyb6sjaY1u-WhatsApp-Image-2025-12-17-at-11.03.46.jpeg", "keyvisual": "https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/ONqygpF1W4PV-WhatsApp-Image-2025-12-16-at-14.58.57.jpeg", "localesCsv": "3, 35, 41, 55, 58, 79, 98, 120, 459"}];
 const localesPorElemento = {"LATERAL CABECERA": ["3", "55", "83", "84", "85", "97", "616", "628", "654", "671", "32", "41", "44", "46", "48", "49", "57", "71", "72", "73", "76", "95", "16", "61", "74", "140", "149", "253", "276", "525", "610", "613", "643", "39", "620", "910", "978", "985", "58", "75"], "ESQUINEROS PARA PALLETS": ["58", "72", "73", "75", "83", "910"], "MINI CABECERA": ["3", "35", "41", "55", "58", "79", "98", "120", "459"]};
 // =======================================================
 
-const cardsRoot = document.getElementById('cardsRoot');
-const modal     = document.getElementById('modalLocales');
-const lista     = document.getElementById('listaLocales');
+const cardsRoot   = document.getElementById('cardsRoot');
+const modal       = document.getElementById('modalLocales');
+const lista       = document.getElementById('listaLocales');
 const inputBuscar = document.getElementById('inputBuscar');
 const btnClose    = document.getElementById('btnCloseModal');
 
-document.getElementById('providerName').textContent   = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
+document.getElementById('providerName').textContent     = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
 document.getElementById('providerVigencia').textContent = "Vigencia: " + (__PROVIDER__.vigencia || "Vigencia actual");
 
-function linkOrText(url) {
+function linkBtn(url, label) {
   if (typeof url === "string") {
-    const u = url.trim().toLowerCase();
-    if (u.startsWith("http://") || u.startsWith("https://")) {
-      return `${url}Ver</a>`;
+    const u = url.trim();
+    const low = u.toLowerCase();
+    if (low.startsWith("http://") || low.startsWith("https://")) {
+      return `${u}${label}</a>`;
     }
   }
-  return `<span class="btn" style="background:#9ca3af;cursor:not-allowed">No Adjunta</span>`;
+  return `<span class="btn disabled">No Adjunta</span>`;
 }
 
 function openLocales(arr) {
@@ -182,8 +185,8 @@ function renderCards() {
           <div class="label">Zona a implementar</div>
           <div class="value">${el.categoria || "No Adjunta"}</div>
         </div>
-        <div class="cell">${linkOrText(el.fotomontaje)}</div>
-        <div class="cell">${linkOrText(el.keyvisual)}</div>
+        <div class="cell">${linkBtn(el.fotomontaje, "Fotomontaje")}</div>
+        <div class="cell">${linkBtn(el.keyvisual, "Key Visual")}</div>
       </div>
       <div class="locales-row">
         <div class="locales-btn" role="button" aria-label="Ver locales">Ver locales (${locales.length})</div>
