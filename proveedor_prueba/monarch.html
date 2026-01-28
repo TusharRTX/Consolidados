@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Walmart Connect – Consolidados</title>
+<title>Walmart Connect – Consolidados 2027</title>
 
 <style>
 :root {
@@ -116,12 +116,20 @@ const btnClose    = document.getElementById('btnCloseModal');
 document.getElementById('providerName').textContent     = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
 document.getElementById('providerVigencia').textContent = "Vigencia: " + (__PROVIDER__.vigencia || "Vigencia actual");
 
+// === BOTÓN AZUL o BOTÓN GRIS (No Adjunta) ===
 function linkBtn(url, label) {
   if (typeof url === "string") {
     const u = url.trim();
     const low = u.toLowerCase();
     if (low.startsWith("http://") || low.startsWith("https://")) {
-      return `${u}${label}</a>`;
+      return `
+        <a href="${u}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn">
+          ${label}
+        </a>
+      `;
     }
   }
   return `<span class="btn disabled">No Adjunta</span>`;
