@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Importadora Tushar</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            background-color: #0b2d5c;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            color: #dce6f5 !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        .content-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            height: 180px;
+            object-fit: contain;
+        }
+
+        .home-btn {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .home-btn:hover {
+            color: #dce6f5;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- BOTÓN HOME -->
+        <a href="/" class="home-btn d-flex align-items-center" title="Inicio">
+            <i class="bi bi-house-fill me-2"></i>
+            <span>Home</span>
+        </a>
+
+        <!-- LOGO + NOMBRE -->
+        <a class="navbar-brand" href="/menu">
+            <img src="/media/logo/a.png">
+            Importadora Tushar
+        </a>
+
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="/crear2/">Crear producto</a>
+            <a class="nav-link" href="/categorias/">Categorías</a>
+            <a class="nav-link" href="/catalogo/">Catálogo</a>
+            <a class="nav-link" href="/categoriasadmin/">Crear Categorías</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="content-box">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+</body>
+</html>
+
+
