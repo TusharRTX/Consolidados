@@ -164,15 +164,22 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
   border-bottom: 1px solid var(--border);
 }
 
-.logo-top {
-  text-align: center;
-  padding: 12px 0 0 0;
+.header-bar {
+  background: var(--primary);
+  color: white;
+  padding: 12px 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.logo-top img {
-  max-height: 40px;
+.logo-header {
+  height: 26px;
   object-fit: contain;
 }
+
 
 .close { font-size: 22px; cursor: pointer; }
 
@@ -185,11 +192,11 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
 
 <body>
 
-<div class="logo-top">
-  <img src="https://media.discordapp.net/attachments/443725780191543307/1467586723159736380/connect_preview_rev_1.png?ex=6980ec25&is=697f9aa5&hm=f751c790db33777077ea486d58b4f6750504c9d363962956a48538cb0c816d90&=&format=webp&quality=lossless" alt="Connect Logo">
-</div>
+<header class="header-bar">
+  <img src="https://cdn.discordapp.com/attachments/443725780191543307/1467586723159736380/connect_preview_rev_1.png?ex=6980ec25&is=697f9aa5&hm=f751c790db33777077ea486d58b4f6750504c9d363962956a48538cb0c816d90&" class="logo-header" alt="Connect">
+  <span>Walmart Connect · Consolidado</span>
+</header>
 
-<header>Walmart Connect · Consolidado</header>
 
 
 <div class="wrapper">
