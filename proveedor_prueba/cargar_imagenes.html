@@ -1,0 +1,54 @@
+{% extends "base2.html" %}
+{% block content %}
+
+<div class="container text-center mt-5">
+    <h2 class="mb-4">📤 Cargar imágenes PNG</h2>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="imagenes" multiple accept=".png" class="form-control mb-3">
+        <button type="submit" class="btn btn-primary">Procesar imágenes</button>
+    </form>
+
+    <div id="spinner" class="mt-4 d-none">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-2">Procesando imágenes...</p>
+    </div>
+
+    <div id="resultado" class="mt-4 d-none">
+        <p class="text-success fw-bold">✔ Proceso terminado</p>
+        <button id="abrirCarpeta" class="btn btn-success">
+            Abrir carpeta output
+        </button>
+    </div>
+</div>
+
+<script>
+const form = document.getElementById("uploadForm");
+const spinner = document.getElementById("spinner");
+const resultado = document.getElementById("resultado");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    spinner.classList.remove("d-none");
+
+    fetch("", {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        spinner.classList.add("d-none");
+        resultado.classList.remove("d-none");
+    });
+});
+
+document.getElementById("abrirCarpeta").addEventListener("click", function() {
+    fetch("/abrir-output/");
+});
+</script>
+
+{% endblock %}
