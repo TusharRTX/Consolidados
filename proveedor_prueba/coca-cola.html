@@ -47,15 +47,6 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
   border: 1px solid var(--border);
 }
 
-.filtro-bar input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-}
-
-
 .card {
   background: var(--panel);
   border-radius: 18px;
@@ -229,6 +220,7 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
   .modal-content { width: 520px; border-radius: 16px; }
 }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 </head>
 
 <body>
@@ -247,10 +239,9 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
     <div class="provider-date" id="providerVigencia">Vigencia</div>
   </div>
 
-<div class="filtro-bar">
-  <input type="text" id="buscadorLocales" placeholder="Buscar local..." />
-  <select id="filtroGlobal"></select>
-</div>
+  <div class="filtro-bar">
+    <select id="filtroGlobal"></select>
+  </div>
 
   <div id="cardsRoot"></div>
 
@@ -283,8 +274,6 @@ const lista       = document.getElementById('listaLocales');
 const inputBuscar = document.getElementById('inputBuscar');
 const btnClose    = document.getElementById('btnCloseModal');
 const selectLocal = document.getElementById('filtroGlobal');
-const buscadorLocales = document.getElementById('buscadorLocales');
-
 
 document.getElementById('providerName').textContent     = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
 document.getElementById('providerVigencia').textContent = "Vigencia: " + (__PROVIDER__.vigencia || "Vigencia");
@@ -346,16 +335,6 @@ function construirSelectLocales(){
     selectLocal.appendChild(op);
   });
 }
-
-function filtrarOpcionesSelect(valor){
-  valor = valor.toLowerCase();
-
-  Array.from(selectLocal.options).forEach(op => {
-    if (op.value === '') return; // no ocultar "Todos"
-    op.style.display = op.textContent.toLowerCase().includes(valor) ? '' : 'none';
-  });
-}
-
 
 /* RENDER */
 function renderCards(){
@@ -422,12 +401,15 @@ window.addEventListener('scroll', checkScroll);
 window.addEventListener('resize', checkScroll);
 checkScroll();
 construirSelectLocales();
-buscadorLocales.addEventListener('input', e => {
-  filtrarOpcionesSelect(e.target.value);
+new Choices('#filtroGlobal', {
+  searchEnabled: true,
+  itemSelectText: '',
+  shouldSort: false,
+  searchPlaceholderValue: 'Buscar local...',
 });
 selectLocal.addEventListener('change', renderCards);
 renderCards();
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </body>
 </html>
