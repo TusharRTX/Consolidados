@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Walmart Connect – Acceso</title>
+<title>Walmart Connect · Acceso</title>
+<link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/443725780191543307/1467586723159736380/connect_preview_rev_1.png">
 
 <style>
 :root {
@@ -15,6 +16,7 @@
   --muted: #6b7280;
 }
 
+/* BASE */
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -24,6 +26,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* HEADER */
@@ -35,92 +40,105 @@ body {
   justify-content: center;
 }
 
+.logo-box {
+  background: white;
+  padding: 6px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+
 .logo-header {
-  height: 34px;
+  height: 28px;
   object-fit: contain;
 }
 
 /* WRAPPER */
 .wrapper {
   max-width: 720px;
-  margin: 40px auto;
-  padding: 0 16px;
+  margin: auto;
+  padding: 20px 16px;
+  width: 100%;
 }
 
-/* CARD CENTRAL */
+/* CARD */
 .card {
   background: var(--panel);
-  border-radius: 20px;
-  box-shadow: 0 10px 28px rgba(0,0,0,.18);
+  border-radius: 22px;
   padding: 28px 22px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.18);
   text-align: center;
 }
 
-.qr-icon {
-  font-size: 54px;
+.icon {
+  font-size: 46px;
   margin-bottom: 14px;
 }
 
-.title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
+h1 {
+  margin: 6px 0 10px 0;
+  font-size: 22px;
 }
 
-.subtitle {
-  font-size: 14px;
+p {
+  margin: 6px 0;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-/* FOOTER MINI */
+strong {
+  color: var(--primary);
+}
+
+/* FOOTER */
 .footer {
   text-align: center;
+  margin-top: 18px;
   font-size: 12px;
   color: var(--muted);
-  margin-top: 18px;
 }
+
 </style>
 </head>
 
 <body>
 
 <header class="header-bar">
-  <img 
-    src="https://www.walmartconnect.com.mx/assets/home/logos/header-wm-large-icon.png"
-    class="logo-header"
-    alt="Walmart Connect"
-  >
+  <div class="logo-box">
+    <img src="https://www.walmartconnect.com.mx/assets/home/logos/header-wm-large-icon.png"
+         class="logo-header"
+         alt="Walmart Connect">
+  </div>
 
   <!--
-  Si algún día quieres texto en vez del logo:
-  <span style="color:white; font-weight:600;">Walmart Connect</span>
+  Si algún día quieres texto en vez de logo:
+  <span style="color:white;font-weight:600;">Walmart Connect</span>
   -->
 </header>
 
 <div class="wrapper">
+
   <div class="card">
+    <div class="icon">📱</div>
 
-    <div class="qr-icon">📱</div>
+    <h1>Hola Proveedor</h1>
 
-    <div class="title">
-      Hola Proveedor
-    </div>
+    <p>
+      Recuerda escanear tu código QR para acceder directamente
+      a tu archivo de <strong>Consolidado</strong>.
+    </p>
 
-    <div class="subtitle">
-      Recuerda escanear tu código QR para acceder<br>
-      directamente a tu archivo de <b>Consolidado</b>.
-      <br><br>
+    <p>
       Este enlace es solo informativo.
-    </div>
-
+    </p>
   </div>
 
   <div class="footer">
     Walmart Connect · Plataforma de Consolidación
   </div>
+
 </div>
 
 </body>
 </html>
+
 
