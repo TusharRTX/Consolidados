@@ -30,28 +30,33 @@ body {
 .header-bar {
   background: var(--primary);
   color: white;
-  padding: 12px 16px;
+  padding: 14px 16px;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 10px;
+  position: relative;
 }
 
-.header-bar span {
-  flex: 1;
-  text-align: center;
-  font-size: 16px;
-}
-
+/* LOGO */
 .logo-header {
-  height: 24px;
+  height: 34px; /* MÁS GRANDE */
   object-fit: contain;
+  margin-right: 8px;
+}
+
+/* TEXTO CENTRADO REAL */
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  white-space: nowrap;
 }
 
 /* WRAPPER */
 .wrapper {
   max-width: 720px;
-  margin: 40px auto 0 auto; /* subido un poco */
+  margin: 28px auto 0 auto; /* MÁS ARRIBA */
   padding: 0 16px;
 }
 
@@ -90,7 +95,7 @@ body {
 
 @media (min-width: 768px) {
   .wrapper {
-    margin-top: 60px;
+    margin-top: 40px;
   }
 }
 </style>
@@ -100,7 +105,7 @@ body {
 
 <header class="header-bar">
   <img src="https://tusharrtx.github.io/Consolidados/connect.png" class="logo-header" alt="Logo">
-  <span>Walmart Connect · Consolidados</span>
+  <div class="header-title">Walmart Connect · Consolidados</div>
 </header>
 
 <div class="wrapper">
@@ -124,6 +129,7 @@ body {
 
 </body>
 </html>
+
 
 
 
