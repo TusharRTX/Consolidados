@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Walmart Connect · Acceso</title>
+<title>Walmart Connect · Consolidados</title>
 
 <style>
 :root {
@@ -15,7 +15,6 @@
   --muted: #6b7280;
 }
 
-/* BASE */
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -38,6 +37,12 @@ body {
   gap: 10px;
 }
 
+.header-bar span {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+}
+
 .logo-header {
   height: 24px;
   object-fit: contain;
@@ -46,64 +51,55 @@ body {
 /* WRAPPER */
 .wrapper {
   max-width: 720px;
-  margin: 40px auto 0 auto; /* ← esto lo sube */
+  margin: 40px auto 0 auto; /* subido un poco */
   padding: 0 16px;
 }
 
 /* CARD */
 .card {
   background: var(--panel);
-  border-radius: 22px;
-  padding: 26px 22px;
-  box-shadow: 0 14px 30px rgba(0,0,0,.18);
+  border-radius: 20px;
+  padding: 26px 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
   text-align: center;
 }
 
 .icon {
-  font-size: 44px;
-  margin-bottom: 12px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
-h1 {
-  margin: 6px 0 10px 0;
+.title {
   font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
-p {
-  margin: 6px 0;
+.text {
+  font-size: 14px;
   color: var(--muted);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-strong {
-  color: var(--primary);
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
+.footer-text {
   margin-top: 18px;
   font-size: 12px;
   color: var(--muted);
+  text-align: center;
 }
 
-/* RESPONSIVE */
-@media (min-height: 900px) {
+@media (min-width: 768px) {
   .wrapper {
-    margin-top: 80px; /* pantallas grandes un poco más abajo */
+    margin-top: 60px;
   }
 }
-
 </style>
 </head>
 
 <body>
 
 <header class="header-bar">
-  <!-- Logo chico a la izquierda -->
-  <img src="https://tusharrtx.github.io/Consolidados/connect.png" alt="Logo">
-
-  <!-- Texto principal -->
+  <img src="https://tusharrtx.github.io/Consolidados/connect.png" class="logo-header" alt="Logo">
   <span>Walmart Connect · Consolidados</span>
 </header>
 
@@ -111,20 +107,16 @@ strong {
 
   <div class="card">
     <div class="icon">📱</div>
-
-    <h1>Hola Proveedor</h1>
-
-    <p>
-      Recuerda escanear tu código QR para acceder directamente
-      a tu archivo de <strong>Consolidado</strong>.
-    </p>
-
-    <p>
+    <div class="title">Hola Proveedor</div>
+    <div class="text">
+      Recuerda escanear tu código QR para acceder<br>
+      directamente a tu archivo de <b>Consolidado</b>.
+      <br><br>
       Este enlace es solo informativo.
-    </p>
+    </div>
   </div>
 
-  <div class="footer">
+  <div class="footer-text">
     Walmart Connect · Plataforma de Consolidación
   </div>
 
@@ -132,4 +124,5 @@ strong {
 
 </body>
 </html>
+
 
