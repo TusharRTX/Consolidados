@@ -1,85 +1,33 @@
-{% extends 'base2.html' %}
-{% block content %}
-
-<div class="container">
-
-    <!-- TÍTULO -->
-    <div class="d-flex align-items-center justify-content-between mb-4">
-        <h2 class="fw-bold text-primary mb-0">
-            <i class="bi bi-folder-fill me-2"></i> Categorías
-        </h2>
-    </div>
-
-    <!-- CREAR CATEGORÍ -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <h5 class="card-title mb-3">
-                <i class="bi bi-plus-circle me-2"></i> Crear nueva categoría
-            </h5>
-
-            <form method="POST" class="row g-3">
-                {% csrf_token %}
-                <div class="col-md-9">
-                    <input
-                        type="text"
-                        name="nombre"
-                        class="form-control form-control-lg"
-                        placeholder="Nombre de la categoría"
-                        required
-                    >
-                </div>
-                <div class="col-md-3 d-grid">
-                    <button type="submit" class="btn btn-primary btn-lg">
-                        <i class="bi bi-check-circle me-1"></i> Agregar
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- LISTADO DE CATEGORÍAS -->
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <h5 class="card-title mb-3">
-                <i class="bi bi-list-ul me-2"></i> Categorías existentes
-            </h5>
-
-            {% if categorias %}
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Nombre</th>
-                                <th class="text-end">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for categoria in categorias %}
-                            <tr>
-                                <td class="fw-semibold">
-                                    {{ categoria.nombre }}
-                                </td>
-                                <td class="text-end">
-                                    <a href="{% url 'eliminar_categoria' categoria.id %}"
-                                       class="btn btn-sm btn-outline-danger"
-                                       onclick="return confirm('¿Eliminar esta categoría?')">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            {% else %}
-                <div class="alert alert-secondary text-center mb-0">
-                    <i class="bi bi-info-circle me-1"></i>
-                    No hay categorías registradas
-                </div>
-            {% endif %}
-        </div>
-    </div>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sin Consolidado</title>
+<style>
+body{
+  font-family:sans-serif;
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+}
+.box{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+h2{color:#0b2a6f;margin:0 0 10px;}
+p{color:#555;margin:0;}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Proveedor sin consolidado vigente</h2>
+<p>Por favor contacta a tu ejecutivo.</p>
 </div>
-
-{% endblock %}
+</body>
+</html>

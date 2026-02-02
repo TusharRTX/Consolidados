@@ -1,73 +1,33 @@
-{% extends 'base2.html' %}
-{% block content %}
-
-<div class="text-center mb-5">
-    <h1 class="fw-bold text-primary">
-        Bienvenido al Sistema de Catálogo PDF
-    </h1>
-    <p class="fs-5 mt-3">
-        Importadora <strong>Tushar</strong><br>
-        Selecciona una opción para comenzar
-    </p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sin Consolidado</title>
+<style>
+body{
+  font-family:sans-serif;
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+}
+.box{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+h2{color:#0b2a6f;margin:0 0 10px;}
+p{color:#555;margin:0;}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Proveedor sin consolidado vigente</h2>
+<p>Por favor contacta a tu ejecutivo.</p>
 </div>
-
-<div class="row g-4">
-
-    <!-- Crear producto -->
-    <div class="col-md-4">
-        <div class="card h-100 text-center shadow-sm">
-            <div class="card-body">
-                <h3>➕</h3>
-                <h5 class="card-title mt-2">Crear Producto</h5>
-                <p class="card-text">
-                    Agrega nuevos productos al sistema con imagen, código y tamaño.
-                </p>
-                <a href="/crear2/" class="btn btn-primary btn-lg w-100">
-                    Crear
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Categorías -->
-    <div class="col-md-4">
-        <div class="card h-100 text-center shadow-sm">
-            <div class="card-body">
-                <h3>📂</h3>
-                <h5 class="card-title mt-2">Categorías</h5>
-                <p class="card-text">
-                    Revisa y administra los productos organizados por categoría.
-                </p>
-
-                <div class="d-grid gap-2">
-                    <a href="/categoriasadmin/" class="btn btn-secondary btn-lg">
-                        Crear categoría
-                    </a>
-                    <a href="/categorias/" class="btn btn-outline-secondary btn-lg">
-                        Ver categorías
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Catálogo -->
-    <div class="col-md-4">
-        <div class="card h-100 text-center shadow-sm">
-            <div class="card-body">
-                <h3>🛍️</h3>
-                <h5 class="card-title mt-2">Catálogo PDF</h5>
-                <p class="card-text">
-                    Genera y descarga el catálogo en formato PDF profesional.
-                </p>
-                <a href="/catalogo/" class="btn btn-success btn-lg w-100">
-                    Ir al catálogo
-                </a>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-{% endblock %}
-
+</body>
+</html>

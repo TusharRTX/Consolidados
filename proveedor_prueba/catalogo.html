@@ -1,46 +1,33 @@
-{% extends 'base2.html' %}
-{% block content %}
-
-<h2 class="text-primary mb-4">Catálogo de Productos</h2>
-<p class="text-muted">
-    Seleccione las categorías que desea incluir en el PDF
-</p>
-
-
-<form method="get" action="/catalogo/pdf/" target="_blank">
-
-{% for c in categorias %}
-<div class="mt-4">
-
-    <h3>
-        <input type="checkbox" name="categorias" value="{{ c.id }}">
-        {{ c.nombre }}
-    </h3>
-
-    <!-- <div class="row">
-    {% for p in c.producto_set.all %}
-        {% if p.activo %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 text-center">
-                <img src="{{ p.imagen.url }}" class="card-img-top">
-                <div class="card-body">
-                    <strong>{{ p.nombre }}</strong><br>
-                    Código: {{ p.codigo }}<br>
-                    Tamaño: {{ p.tamaño }}
-                </div>
-            </div>
-        </div>
-        {% endif %}
-    {% endfor %}
-    </div> -->
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sin Consolidado</title>
+<style>
+body{
+  font-family:sans-serif;
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+}
+.box{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+h2{color:#0b2a6f;margin:0 0 10px;}
+p{color:#555;margin:0;}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Proveedor sin consolidado vigente</h2>
+<p>Por favor contacta a tu ejecutivo.</p>
 </div>
-{% endfor %}
-
-<button class="btn btn-success btn-lg mt-4">
-    📄 Ver / Descargar PDF
-</button>
-
-</form>
-
-{% endblock %}
+</body>
+</html>

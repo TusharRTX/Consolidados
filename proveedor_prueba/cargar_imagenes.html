@@ -1,54 +1,33 @@
-{% extends "base2.html" %}
-{% block content %}
-
-<div class="container text-center mt-5">
-    <h2 class="mb-4">📤 Cargar imágenes PNG</h2>
-
-    <form id="uploadForm" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="imagenes" multiple accept=".png" class="form-control mb-3">
-        <button type="submit" class="btn btn-primary">Procesar imágenes</button>
-    </form>
-
-    <div id="spinner" class="mt-4 d-none">
-        <div class="spinner-border text-primary" role="status"></div>
-        <p class="mt-2">Procesando imágenes...</p>
-    </div>
-
-    <div id="resultado" class="mt-4 d-none">
-        <p class="text-success fw-bold">✔ Proceso terminado</p>
-        <button id="abrirCarpeta" class="btn btn-success">
-            Abrir carpeta output
-        </button>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sin Consolidado</title>
+<style>
+body{
+  font-family:sans-serif;
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+}
+.box{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+h2{color:#0b2a6f;margin:0 0 10px;}
+p{color:#555;margin:0;}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Proveedor sin consolidado vigente</h2>
+<p>Por favor contacta a tu ejecutivo.</p>
 </div>
-
-<script>
-const form = document.getElementById("uploadForm");
-const spinner = document.getElementById("spinner");
-const resultado = document.getElementById("resultado");
-
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    spinner.classList.remove("d-none");
-
-    fetch("", {
-        method: "POST",
-        body: new FormData(form),
-        headers: {
-            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-        spinner.classList.add("d-none");
-        resultado.classList.remove("d-none");
-    });
-});
-
-document.getElementById("abrirCarpeta").addEventListener("click", function() {
-    fetch("/abrir-output/");
-});
-</script>
-
-{% endblock %}
+</body>
+</html>

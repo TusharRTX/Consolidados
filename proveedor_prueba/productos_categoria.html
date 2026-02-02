@@ -1,37 +1,33 @@
-{% extends 'base2.html' %}
-{% block content %}
-
-<h2 class="mb-4 text-primary">
-    Categoría: {{ categoria.nombre }}
-</h2>
-
-
-<table class="table table-bordered mt-4 align-middle">
-<thead class="table-light">
-<tr>
-    <th>Imagen</th>
-    <th>Nombre</th>
-    <th>Código</th>
-    <th>Tamaño</th>
-    <th>Acciones</th>
-</tr>
-</thead>
-
-<tbody>
-{% for p in productos %}
-<tr>
-    <td><img src="{{ p.imagen.url }}" width="80"></td>
-    <td>{{ p.nombre }}</td>
-    <td>{{ p.codigo }}</td>
-    <td>{{ p.tamaño }}</td>
-    <td>
-        <a href="/editar2/{{ p.id }}/" class="btn btn-warning btn-sm">Editar</a>
-        <a href="/eliminar2/{{ p.id }}/" class="btn btn-danger btn-sm"
-           onclick="return confirm('¿Eliminar producto test?')">Eliminar</a>
-    </td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sin Consolidado</title>
+<style>
+body{
+  font-family:sans-serif;
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+}
+.box{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+h2{color:#0b2a6f;margin:0 0 10px;}
+p{color:#555;margin:0;}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Proveedor sin consolidado vigente</h2>
+<p>Por favor contacta a tu ejecutivo.</p>
+</div>
+</body>
+</html>
