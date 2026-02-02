@@ -40,20 +40,13 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
   box-shadow: 0 6px 14px rgba(0,0,0,.12);
 }
 
-.filtro-bar select {
+.filtro-bar input {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid var(--border);
 }
 
-#buscadorLocales {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-}
 
 .card {
   background: var(--panel);
@@ -246,11 +239,10 @@ header { background: var(--primary); color: white; padding: 16px; text-align: ce
     <div class="provider-date" id="providerVigencia">Vigencia</div>
   </div>
 
-<div class="filtro-bar">
-  <input type="text" id="buscadorLocales" placeholder="Buscar local..." />
-  <select id="filtroGlobal"></select>
-</div>
-
+  <div class="filtro-bar">
+    <input id="filtroGlobal" list="listaLocalesDatalist" placeholder="Buscar local...">
+    <datalist id="listaLocalesDatalist"></datalist>
+  </div>
 
   <div id="cardsRoot"></div>
 
@@ -283,8 +275,6 @@ const lista       = document.getElementById('listaLocales');
 const inputBuscar = document.getElementById('inputBuscar');
 const btnClose    = document.getElementById('btnCloseModal');
 const selectLocal = document.getElementById('filtroGlobal');
-const buscadorLocales = document.getElementById('buscadorLocales');
-
 
 document.getElementById('providerName').textContent     = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
 document.getElementById('providerVigencia').textContent = "Vigencia: " + (__PROVIDER__.vigencia || "Vigencia");
@@ -337,30 +327,20 @@ function construirSelectLocales(){
   const setLocales = new Set();
   Object.values(localesPorElemento).forEach(arr=> arr.forEach(l=> setLocales.add(l)));
 
-  selectLocal.innerHTML = '<option value="">Todos los locales</option>';
+  const dataList = document.getElementById('listaLocalesDatalist');
+  dataList.innerHTML = '';
 
   [...setLocales].sort().forEach(l=>{
-    const op=document.createElement('option');
-    op.value=l;
-    op.textContent='Local '+l;
-    selectLocal.appendChild(op);
-  });
-}
-
-function filtrarOpcionesSelect(valor){
-  const texto = valor.toLowerCase();
-  const opciones = selectLocal.querySelectorAll('option');
-
-  opciones.forEach(op=>{
-    if(op.value === "") return; // no tocar "Todos los locales"
-    op.style.display = op.textContent.toLowerCase().includes(texto) ? '' : 'none';
+    const op = document.createElement('option');
+    op.value = 'Local ' + l;
+    dataList.appendChild(op);
   });
 }
 
 
 /* RENDER */
 function renderCards(){
-  const filtro = selectLocal.value;
+  const filtro = selectLocal.value.replace('Local ', '');
   cardsRoot.innerHTML='';
 
   elementos.forEach(el=>{
@@ -423,10 +403,7 @@ window.addEventListener('scroll', checkScroll);
 window.addEventListener('resize', checkScroll);
 checkScroll();
 construirSelectLocales();
-buscadorLocales.addEventListener('keyup', e=>{
-  filtrarOpcionesSelect(e.target.value);
-});
-selectLocal.addEventListener('change', renderCards);
+selectLocal.addEventListener('input', renderCards);
 renderCards();
 </script>
 
