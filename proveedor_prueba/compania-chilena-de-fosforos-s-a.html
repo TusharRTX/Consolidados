@@ -20,6 +20,7 @@
 }
 * { box-sizing: border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
 body { margin: 0; background: var(--bg); color: var(--text); }
+header { background: var(--primary); color: white; padding: 16px; text-align: center; font-weight: 600; }
 
 .wrapper { max-width: 760px; margin: 20px auto; padding: 0 14px; }
 
@@ -39,7 +40,7 @@ body { margin: 0; background: var(--bg); color: var(--text); }
   box-shadow: 0 6px 14px rgba(0,0,0,.12);
 }
 
-.filtro-bar input {
+.filtro-bar select {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
@@ -197,7 +198,13 @@ body { margin: 0; background: var(--bg); color: var(--text); }
   box-shadow: 0 6px 14px rgba(0,0,0,.25);
   z-index: 2000;
   opacity: .85;
+  transition: opacity .2s ease, transform .2s ease;
   animation: bounce 1.6s infinite;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 @keyframes bounce {
@@ -205,6 +212,8 @@ body { margin: 0; background: var(--bg); color: var(--text); }
   50% { transform: translateY(-6px); }
   100% { transform: translateY(0); }
 }
+
+.close { font-size: 22px; cursor: pointer; }
 
 @media (min-width: 769px) {
   .modal { align-items: center; }
@@ -216,9 +225,11 @@ body { margin: 0; background: var(--bg); color: var(--text); }
 <body>
 
 <header class="header-bar">
-  <img src="https://www.walmartconnect.com.mx/assets/home/logos/header-wm-large-icon.png" class="logo-header">
+  <img src="https://www.walmartconnect.com.mx/assets/home/logos/header-wm-large-icon.png" class="logo-header" alt="Connect">
   <span>Walmart Connect · Consolidado</span>
 </header>
+
+
 
 <div class="wrapper">
 
@@ -228,8 +239,7 @@ body { margin: 0; background: var(--bg); color: var(--text); }
   </div>
 
   <div class="filtro-bar">
-    <input id="filtroGlobal" list="listaLocalesGlobal" placeholder="Buscar local..." />
-    <datalist id="listaLocalesGlobal"></datalist>
+    <select id="filtroGlobal"></select>
   </div>
 
   <div id="cardsRoot"></div>
@@ -267,57 +277,69 @@ const selectLocal = document.getElementById('filtroGlobal');
 document.getElementById('providerName').textContent     = "Proveedor: " + (__PROVIDER__.proveedor || "Proveedor");
 document.getElementById('providerVigencia').textContent = "Vigencia: " + (__PROVIDER__.vigencia || "Vigencia");
 
-/* ORDEN INTELIGENTE */
-function ordenarLocalesInteligente(arr){
-  return [...arr].sort((a,b)=>{
-    const na = a.match(/\d+/);
-    const nb = b.match(/\d+/);
-    if(na && nb) return parseInt(na[0]) - parseInt(nb[0]);
-    if(na) return -1;
-    if(nb) return 1;
-    return a.localeCompare(b,'es',{sensitivity:'base'});
-  });
+/* PREVIEW */
+function esImagen(url){ return url && /\.(jpg|jpeg|png|webp|gif)$/i.test(url); }
+function previewImg(url){ return esImagen(url) ? `<img src="${url}" class="preview-img"/>` : ""; }
+
+function linkBtn(url,label){
+  if(url && url.startsWith("http")){
+    return `<a href="${url}" target="_blank" class="btn">${label}</a>`;
+  }
+  return `<span class="btn disabled">No Adjunta</span>`;
 }
 
 /* MODAL */
 function openLocales(arr){
   lista.innerHTML='';
-  ordenarLocalesInteligente(arr || []).forEach(l=>{
+  (arr || []).forEach(l=>{
     const li=document.createElement('li');
     li.textContent='Local '+l;
     lista.appendChild(li);
   });
+  inputBuscar.value='';
   modal.style.display='flex';
+  document.body.style.overflow='hidden';
 }
 
-function closeModal(){ modal.style.display='none'; }
+function closeModal(){
+  modal.style.display='none';
+  document.body.style.overflow='';
+}
 
-inputBuscar.addEventListener('keyup', e => {
-  const val=e.target.value.toLowerCase();
+function filterLocales(val){
+  val=val.toLowerCase();
   document.querySelectorAll('#listaLocales li').forEach(li=>{
-    li.style.display=li.textContent.toLowerCase().includes(val)?'':'none';
+    li.style.display=li.textContent.toLowerCase().includes(val) ? '' : 'none';
   });
+}
+
+inputBuscar.addEventListener('keyup', e => filterLocales(e.target.value));
+btnClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
 });
 
-btnClose.onclick=closeModal;
-
-/* SELECT */
+/* SELECT LOCALES */
 function construirSelectLocales(){
-  const set=new Set();
-  Object.values(localesPorElemento).forEach(a=>a.forEach(l=>set.add(l)));
-  const lista=document.getElementById('listaLocalesGlobal');
-  lista.innerHTML='';
-  ordenarLocalesInteligente([...set]).forEach(l=>{
+  const setLocales = new Set();
+  Object.values(localesPorElemento).forEach(arr=> arr.forEach(l=> setLocales.add(l)));
+
+  selectLocal.innerHTML = '<option value="">Todos los locales</option>';
+
+  [...setLocales].sort().forEach(l=>{
     const op=document.createElement('option');
     op.value=l;
-    lista.appendChild(op);
+    op.textContent='Local '+l;
+    selectLocal.appendChild(op);
   });
 }
 
 /* RENDER */
 function renderCards(){
-  const filtro=selectLocal.value;
+  const filtro = selectLocal.value;
   cardsRoot.innerHTML='';
+
   elementos.forEach(el=>{
     const locales=localesPorElemento[el.nombre]||[];
     if(filtro && !locales.includes(filtro)) return;
@@ -330,19 +352,55 @@ function renderCards(){
         <div class="cell"><div class="label">Medidas</div><div class="value">${el.medidas}</div></div>
         <div class="cell"><div class="label">Piezas</div><div class="value">${el.piezas ? el.piezas + " por local" : "-"}</div></div>
         <div class="cell"><div class="label">Zona</div><div class="value">${el.categoria || "No Adjunta"}</div></div>
+
+        <div class="cell">
+          ${previewImg(el.fotomontaje)}
+          ${linkBtn(el.fotomontaje,"Fotomontaje")}
+        </div>
+        <div class="cell">
+          ${previewImg(el.keyvisual)}
+          ${linkBtn(el.keyvisual,"Key Visual")}
+        </div>
       </div>
       <div class="locales-row">
         <div class="locales-btn">Ver locales (${locales.length})</div>
       </div>
     `;
+
     card.querySelector('.locales-btn').onclick=()=>openLocales(locales);
     cardsRoot.appendChild(card);
   });
 }
 
+/* SCROLL INDICATOR LOGIC */
+const scrollIndicator = document.getElementById('scrollIndicator');
+
+function checkScroll() {
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const docHeight = document.body.scrollHeight;
+
+  if (scrollTop + windowHeight >= docHeight - 10) {
+    scrollIndicator.style.display = 'none';
+  } else {
+    scrollIndicator.style.display = 'flex';
+  }
+}
+
+scrollIndicator.addEventListener('click', () => {
+  window.scrollBy({
+    top: window.innerHeight * 0.9,
+    behavior: 'smooth'
+  });
+});
+
+
 /* INIT */
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('resize', checkScroll);
+checkScroll();
 construirSelectLocales();
-selectLocal.addEventListener('input', renderCards);
+selectLocal.addEventListener('change', renderCards);
 renderCards();
 </script>
 
