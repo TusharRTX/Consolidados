@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Walmart Connect · Acceso</title>
-<link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/443725780191543307/1467586723159736380/connect_preview_rev_1.png">
 
 <style>
 :root {
@@ -26,52 +25,43 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 /* HEADER */
 .header-bar {
   background: var(--primary);
-  padding: 14px 16px;
+  color: white;
+  padding: 12px 16px;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.logo-box {
-  background: white;
-  padding: 6px 14px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  gap: 10px;
 }
 
 .logo-header {
-  height: 28px;
+  height: 24px;
   object-fit: contain;
 }
 
 /* WRAPPER */
 .wrapper {
   max-width: 720px;
-  margin: auto;
-  padding: 20px 16px;
-  width: 100%;
+  margin: 40px auto 0 auto; /* ← esto lo sube */
+  padding: 0 16px;
 }
 
 /* CARD */
 .card {
   background: var(--panel);
   border-radius: 22px;
-  padding: 28px 22px;
+  padding: 26px 22px;
   box-shadow: 0 14px 30px rgba(0,0,0,.18);
   text-align: center;
 }
 
 .icon {
-  font-size: 46px;
-  margin-bottom: 14px;
+  font-size: 44px;
+  margin-bottom: 12px;
 }
 
 h1 {
@@ -97,22 +87,24 @@ strong {
   color: var(--muted);
 }
 
+/* RESPONSIVE */
+@media (min-height: 900px) {
+  .wrapper {
+    margin-top: 80px; /* pantallas grandes un poco más abajo */
+  }
+}
+
 </style>
 </head>
 
 <body>
 
 <header class="header-bar">
-  <div class="logo-box">
-    <img src="https://www.walmartconnect.com.mx/assets/home/logos/header-wm-large-icon.png"
-         class="logo-header"
-         alt="Walmart Connect">
-  </div>
+  <!-- Logo chico a la izquierda -->
+  <img src="https://tusharrtx.github.io/Consolidados/connect.png" class="logo-header" alt="Logo">
 
-  <!--
-  Si algún día quieres texto en vez de logo:
-  <span style="color:white;font-weight:600;">Walmart Connect</span>
-  -->
+  <!-- Texto principal -->
+  <span>Walmart Connect · Consolidados</span>
 </header>
 
 <div class="wrapper">
@@ -140,5 +132,6 @@ strong {
 
 </body>
 </html>
+
 
 
