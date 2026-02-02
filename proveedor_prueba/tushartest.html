@@ -1,33 +1,397 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Sin Consolidado</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Walmart Connect – Consolidados dfsgsdsdhsdh</title>
+
 <style>
-body{
-  font-family:sans-serif;
-  background:#f3f4f6;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  margin:0;
+:root {
+  --primary: #0b2a6f;
+  --bg: #d1d5db;
+  --panel: #ffffff;
+  --border: #e5e7eb;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --btn: #2563eb;
+  --btn-disabled: #9ca3af;
+  --focus-bg: #eef2ff;
 }
-.box{
-  background:white;
-  padding:30px;
-  border-radius:14px;
-  text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
-h2{color:#0b2a6f;margin:0 0 10px;}
-p{color:#555;margin:0;}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.wrapper {
+  max-width: 760px;
+  margin: 24px auto;
+  padding: 0 14px;
+}
+
+.provider-bar {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.provider-name { font-weight: 700; }
+.provider-date { font-size: 12px; color: var(--muted); }
+
+.card {
+  background: var(--panel);
+  border-radius: 18px;
+  margin-bottom: 26px;
+
+  /* separación visual clara */
+  border: 1px solid #e6e9f0;
+  box-shadow: 0 6px 14px rgba(0,0,0,.10);
+
+  overflow: hidden;
+
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.grid-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.cell {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.grid-main > .cell:nth-child(odd) {
+  border-right: 1px solid var(--border);
+}
+
+.grid-main > .cell:nth-last-child(-n + 2) {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.value { font-weight: 600; }
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 11px;
+  text-align: center;
+  background: var(--btn);
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn.disabled { background: var(--btn-disabled); }
+
+.btn-locales {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  border-radius: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-locales.disabled {
+  background: var(--btn-disabled);
+}
+
+.locales-row {
+  border-top: 1px solid var(--border);
+  padding: 16px;
+}
+
+.anexo {
+  page-break-before: always;
+}
+
+.anexo h2 {
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 20px;
+  page-break-after: avoid;
+}
+
+.anexo-block {
+  background: var(--focus-bg);
+  border-left: 6px solid var(--primary);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 24px;
+  page-break-inside: avoid;
+}
+
+.anexo-header {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.anexo-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.anexo-list {
+  columns: 2;
+  column-gap: 24px;
+  font-size: 12px;
+}
+
+.anexo-list ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.anexo-list li {
+  margin-bottom: 4px;
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .card,
+  .provider-bar {
+    box-shadow: none !important;
+  }
+}
+
 </style>
 </head>
+
 <body>
-<div class="box">
-<h2>Proveedor sin consolidado vigente</h2>
-<p>Por favor contacta a tu ejecutivo.</p>
+
+<header>Walmart Connect · Consolidados</header>
+
+<div class="wrapper">
+  <div class="provider-bar">
+    <div class="provider-name">Proveedor: ECCUSA</div>
+    <div class="provider-date">Vigencia: Etapa 1 (08/01/26 → 10/02/26)</div>
+  </div>
+
+  
+        <div class="card">
+          <div class="grid-main">
+            <div class="cell">
+              <div class="label">Elemento</div>
+              <div class="value">ESQUINEROS PARA PALLETS</div>
+            </div>
+            <div class="cell">
+              <div class="label">Medidas</div>
+              <div class="value">MÁXIMO: 60x110 cm.</div>
+            </div>
+            <div class="cell">
+              <div class="label">Cantidad de piezas</div>
+              <div class="value">4 por local</div>
+            </div>
+            <div class="cell">
+              <div class="label">Zona a implementar</div>
+              <div class="value">BEBIDAS - AGUA</div>
+            </div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/ntkQpJ4OIilo-MAS_FRUTOS-ROJOS-WM-ESQUINEROS_1.2.jpg" class="btn">Fotomontaje</a></div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/JqB10h8qMm01-ESQUINERO-FRUTOS-DEL-BOSQUE-MAS-WM-60X80CM-v2.jpg" class="btn">Key Visual</a></div>
+          </div>
+          <div class="locales-row"><a href="#anexo-esquineros-para-pallets-bebidas-agua" class="btn-locales">Locales: 81 (ver anexo)</a></div>
+        </div>
+        
+
+        <div class="card">
+          <div class="grid-main">
+            <div class="cell">
+              <div class="label">Elemento</div>
+              <div class="value">LATERAL CABECERA</div>
+            </div>
+            <div class="cell">
+              <div class="label">Medidas</div>
+              <div class="value">MÁXIMO: 45x160 cm, 40x170 cm.</div>
+            </div>
+            <div class="cell">
+              <div class="label">Cantidad de piezas</div>
+              <div class="value">2 por local</div>
+            </div>
+            <div class="cell">
+              <div class="label">Zona a implementar</div>
+              <div class="value">BEBIDAS - JUGOS</div>
+            </div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/ZOsDs9MuKRot-LIPTON-MANGO_REV-CAB-WM_071025_1.1.jpg" class="btn">Fotomontaje</a></div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/Bx4TYl8oEuX1-OR_REV-CABECERA-WM-LIPTON-MANGO-15L_45x160cm-071025.jpg" class="btn">Key Visual</a></div>
+          </div>
+          <div class="locales-row"><a href="#anexo-lateral-cabecera-bebidas-jugos" class="btn-locales">Locales: 62 (ver anexo)</a></div>
+        </div>
+        
+
+        <div class="card">
+          <div class="grid-main">
+            <div class="cell">
+              <div class="label">Elemento</div>
+              <div class="value">LATERAL CABECERA</div>
+            </div>
+            <div class="cell">
+              <div class="label">Medidas</div>
+              <div class="value">MÁXIMO: 45x160 cm, 40x170 cm.</div>
+            </div>
+            <div class="cell">
+              <div class="label">Cantidad de piezas</div>
+              <div class="value">1 por local</div>
+            </div>
+            <div class="cell">
+              <div class="label">Zona a implementar</div>
+              <div class="value">BEBIDAS - JUGOS</div>
+            </div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/vu0sBOenICVh-WhatsApp-Image-2025-12-23-at-11.33.41-AM-1.jpeg" class="btn">Fotomontaje</a></div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/Um250BBI34z0-OR_WATTS-SELECCION-NARANJA-100_RV-CABECERA-WM_121225-1.jpg" class="btn">Key Visual</a></div>
+          </div>
+          <div class="locales-row"><a href="#anexo-lateral-cabecera-bebidas-jugos" class="btn-locales">Locales: 62 (ver anexo)</a></div>
+        </div>
+        
+
+        <div class="card">
+          <div class="grid-main">
+            <div class="cell">
+              <div class="label">Elemento</div>
+              <div class="value">MINI CABECERA</div>
+            </div>
+            <div class="cell">
+              <div class="label">Medidas</div>
+              <div class="value">MÁXIMO: 40x20x145 cm.</div>
+            </div>
+            <div class="cell">
+              <div class="label">Cantidad de piezas</div>
+              <div class="value">1 por local</div>
+            </div>
+            <div class="cell">
+              <div class="label">Zona a implementar</div>
+              <div class="value">BEBIDAS - HIDRATACI?N - ENERG?A</div>
+            </div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/hw2IMXeq4AUD-MINI-CABECERA-ROCKSTAR-SANDIA-WM_2.jpg" class="btn">Fotomontaje</a></div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/VzOaZ67zH65s-OR_MINI-CABECERA-WM-ROCKSTAR-SANDIA-13102025.jpg" class="btn">Key Visual</a></div>
+          </div>
+          <div class="locales-row"><a href="#anexo-mini-cabecera-bebidas-hidrataci-n-energ-a" class="btn-locales">Locales: 5 (ver anexo)</a></div>
+        </div>
+        
+
+        <div class="card">
+          <div class="grid-main">
+            <div class="cell">
+              <div class="label">Elemento</div>
+              <div class="value">ESQUINEROS PARA PALLETS</div>
+            </div>
+            <div class="cell">
+              <div class="label">Medidas</div>
+              <div class="value">MÁXIMO: 60x110 cm.</div>
+            </div>
+            <div class="cell">
+              <div class="label">Cantidad de piezas</div>
+              <div class="value">1 por local</div>
+            </div>
+            <div class="cell">
+              <div class="label">Zona a implementar</div>
+              <div class="value">BEBIDAS - GAS</div>
+            </div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/eTrZ3aagL0lO-ESQUINERO-WM-GASEOSAS-VERANO_60x110cm.jpg" class="btn">Fotomontaje</a></div>
+            <div class="cell"><a href="https://walmartconnect.cl/wp-content/uploads/forminator/818_69591769e92703498e05efc8dbca5e38/uploads/9Uk3lv0LoXBp-ESQUINERO-WM-GASEOSAS-VERANO_60x110cm.jpg" class="btn">Key Visual</a></div>
+          </div>
+          <div class="locales-row"><a href="#anexo-esquineros-para-pallets-bebidas-gas" class="btn-locales">Locales: 81 (ver anexo)</a></div>
+        </div>
+        
+
+  <div class="anexo">
+    <h2>ANEXO – LOCALES POR ELEMENTO</h2>
+    
+        <div class="anexo-block" id="anexo-esquineros-para-pallets-bebidas-agua">
+          <div class="anexo-header">Elemento: ESQUINEROS PARA PALLETS</div>
+          <div class="anexo-sub">Zona a implementar: BEBIDAS - AGUA</div>
+          <div class="anexo-list">
+            <ul>
+              <li>3</li><li>32</li><li>33</li><li>35</li><li>36</li><li>38</li><li>41</li><li>44</li><li>45</li><li>46</li><li>48</li><li>49</li><li>55</li><li>57</li><li>58</li><li>62</li><li>71</li><li>72</li><li>73</li><li>75</li><li>76</li><li>77</li><li>78</li><li>79</li><li>81</li><li>82</li><li>83</li><li>85</li><li>86</li><li>88</li><li>89</li><li>91</li><li>94</li><li>95</li><li>96</li><li>97</li><li>120</li><li>121</li><li>126</li><li>127</li><li>137</li><li>143</li><li>182</li><li>244</li><li>425</li><li>426</li><li>456</li><li>459</li><li>518</li><li>607</li><li>608</li><li>618</li><li>620</li><li>626</li><li>628</li><li>631</li><li>632</li><li>654</li><li>655</li><li>670</li><li>671</li><li>679</li><li>682</li><li>684</li><li>686</li><li>693</li><li>697</li><li>736</li><li>739</li><li>747</li><li>985</li><li>84</li><li>92</li><li>93</li><li>99</li><li>122</li><li>457</li><li>647</li><li>680</li><li>681</li><li>929</li>
+            </ul>
+          </div>
+        </div>
+        
+
+        <div class="anexo-block" id="anexo-lateral-cabecera-bebidas-jugos">
+          <div class="anexo-header">Elemento: LATERAL CABECERA</div>
+          <div class="anexo-sub">Zona a implementar: BEBIDAS - JUGOS</div>
+          <div class="anexo-list">
+            <ul>
+              <li>3</li><li>33</li><li>37</li><li>38</li><li>39</li><li>45</li><li>53</li><li>57</li><li>75</li><li>76</li><li>78</li><li>80</li><li>81</li><li>82</li><li>83</li><li>84</li><li>88</li><li>91</li><li>92</li><li>93</li><li>94</li><li>98</li><li>99</li><li>125</li><li>126</li><li>127</li><li>182</li><li>457</li><li>654</li><li>655</li><li>670</li><li>671</li><li>686</li><li>697</li><li>736</li><li>739</li><li>929</li><li>988</li><li>32</li><li>36</li><li>41</li><li>42</li><li>55</li><li>58</li><li>66</li><li>72</li><li>85</li><li>86</li><li>97</li><li>137</li><li>279</li><li>425</li><li>426</li><li>456</li><li>518</li><li>608</li><li>618</li><li>620</li><li>632</li><li>682</li><li>684</li><li>978</li>
+            </ul>
+          </div>
+        </div>
+        
+
+        <div class="anexo-block" id="anexo-lateral-cabecera-bebidas-jugos">
+          <div class="anexo-header">Elemento: LATERAL CABECERA</div>
+          <div class="anexo-sub">Zona a implementar: BEBIDAS - JUGOS</div>
+          <div class="anexo-list">
+            <ul>
+              <li>3</li><li>33</li><li>37</li><li>38</li><li>39</li><li>45</li><li>53</li><li>57</li><li>75</li><li>76</li><li>78</li><li>80</li><li>81</li><li>82</li><li>83</li><li>84</li><li>88</li><li>91</li><li>92</li><li>93</li><li>94</li><li>98</li><li>99</li><li>125</li><li>126</li><li>127</li><li>182</li><li>457</li><li>654</li><li>655</li><li>670</li><li>671</li><li>686</li><li>697</li><li>736</li><li>739</li><li>929</li><li>988</li><li>32</li><li>36</li><li>41</li><li>42</li><li>55</li><li>58</li><li>66</li><li>72</li><li>85</li><li>86</li><li>97</li><li>137</li><li>279</li><li>425</li><li>426</li><li>456</li><li>518</li><li>608</li><li>618</li><li>620</li><li>632</li><li>682</li><li>684</li><li>978</li>
+            </ul>
+          </div>
+        </div>
+        
+
+        <div class="anexo-block" id="anexo-mini-cabecera-bebidas-hidrataci-n-energ-a">
+          <div class="anexo-header">Elemento: MINI CABECERA</div>
+          <div class="anexo-sub">Zona a implementar: BEBIDAS - HIDRATACI?N - ENERG?A</div>
+          <div class="anexo-list">
+            <ul>
+              <li>48</li><li>75</li><li>92</li><li>126</li><li>426</li>
+            </ul>
+          </div>
+        </div>
+        
+
+        <div class="anexo-block" id="anexo-esquineros-para-pallets-bebidas-gas">
+          <div class="anexo-header">Elemento: ESQUINEROS PARA PALLETS</div>
+          <div class="anexo-sub">Zona a implementar: BEBIDAS - GAS</div>
+          <div class="anexo-list">
+            <ul>
+              <li>3</li><li>32</li><li>33</li><li>35</li><li>36</li><li>38</li><li>41</li><li>44</li><li>45</li><li>46</li><li>48</li><li>49</li><li>55</li><li>57</li><li>58</li><li>62</li><li>71</li><li>72</li><li>73</li><li>75</li><li>76</li><li>77</li><li>78</li><li>79</li><li>81</li><li>82</li><li>83</li><li>85</li><li>86</li><li>88</li><li>89</li><li>91</li><li>94</li><li>95</li><li>96</li><li>97</li><li>120</li><li>121</li><li>126</li><li>127</li><li>137</li><li>143</li><li>182</li><li>244</li><li>425</li><li>426</li><li>456</li><li>459</li><li>518</li><li>607</li><li>608</li><li>618</li><li>620</li><li>626</li><li>628</li><li>631</li><li>632</li><li>654</li><li>655</li><li>670</li><li>671</li><li>679</li><li>682</li><li>684</li><li>686</li><li>693</li><li>697</li><li>736</li><li>739</li><li>747</li><li>985</li><li>84</li><li>92</li><li>93</li><li>99</li><li>122</li><li>457</li><li>647</li><li>680</li><li>681</li><li>929</li>
+            </ul>
+          </div>
+        </div>
+        
+  </div>
 </div>
+
 </body>
 </html>
